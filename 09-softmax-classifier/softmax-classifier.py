@@ -1,13 +1,11 @@
 import time
-from pathlib import Path
-
-import matplotlib.pyplot as plt
 import torch
 import torch.nn.functional as F
 import torch.optim as optim
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
-
+from pathlib import Path
+import matplotlib.pyplot as plt
 
 class SoftmaxClassifier(torch.nn.Module):
     def __init__(self):
@@ -163,8 +161,8 @@ def main():
     batch_size = 64
     transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))]) # mean 0.1307, std 0.3081
 
-    train_dataset = datasets.MNIST(root='/home/lsouba/dataset/mnist', train=True, download=True, transform=transform)
-    test_dataset = datasets.MNIST(root='/home/lsouba/dataset/mnist', train=False, download=True, transform=transform)
+    train_dataset = datasets.MNIST(root=f'{Path.home()}/dataset/mnist', train=True, download=True, transform=transform)
+    test_dataset = datasets.MNIST(root=f'{Path.home()}/dataset/mnist', train=False, download=True, transform=transform)
 
     num_epochs = 10
     num_workers = 4
